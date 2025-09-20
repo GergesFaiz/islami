@@ -43,9 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
             type: BottomNavigationBarType.fixed,
             currentIndex: index,
             selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.black38,
+            unselectedItemColor: Colors.black,
             elevation: 0,
-            iconSize: 35,
             onTap: (value) {
               index = value;
               setState(() {});
