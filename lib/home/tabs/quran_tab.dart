@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/home/sura_details.dart';
-import 'package:islami/home/sura_model.dart';
+import 'package:islami/models/sura_model.dart';
 import 'package:islami/home/tabs/ahadeth_tab.dart';
 
 class QuranTab extends StatelessWidget {
@@ -142,14 +142,9 @@ class QuranTab extends StatelessWidget {
           ],
         ),
         Divider(thickness: 3, color: Color(0xffB7935F)),
-
         Text(
-          "اسم السوره",
-          style: GoogleFonts.elMessiri(
-            fontSize: 25,
-            fontWeight: FontWeight.w600,
+          "اسم السوره",style: Theme.of(context).textTheme.bodyLarge,
           ),
-        ),
         Divider(thickness: 3, color: Color(0xffB7935F)),
         Expanded(
           child: ListView.separated(
@@ -162,9 +157,10 @@ class QuranTab extends StatelessWidget {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context,
-                      SuraDetails.routeName,
-                    arguments: SuraModel(index: index, name:  suraNames[index])
+                  Navigator.pushNamed(
+                    context,
+                    SuraDetails.routeName,
+                    arguments: SuraModel(index: index, name: suraNames[index]),
                   );
                 },
                 child: Text(

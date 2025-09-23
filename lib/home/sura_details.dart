@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami/home/sura_model.dart';
+import 'package:islami/models/sura_model.dart';
 
 class SuraDetails extends StatefulWidget {
   static const String routeName = "SuraDetails";
@@ -18,10 +18,7 @@ class _SuraDetailsState extends State<SuraDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var model = ModalRoute
-        .of(context)!
-        .settings
-        .arguments as SuraModel;
+    var model = ModalRoute.of(context)!.settings.arguments as SuraModel;
     if (verses.isEmpty) {
       loadFile(model.index);
     }
@@ -29,26 +26,33 @@ class _SuraDetailsState extends State<SuraDetails> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),fit: BoxFit.fill)),
-        child: Scaffold(backgroundColor: Colors.transparent,
-      appBar: AppBar(
-      backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Text(
-          model.name,
-          style: GoogleFonts.elMessiri(
-            fontWeight: FontWeight.w700,
-            fontSize: 30,
+          image: AssetImage("assets/images/background.png"),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        appBar: AppBar(title: Text(model.name)),
+        body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Container(
+            padding: EdgeInsets.all(25),
+            height: 652,
+            width: 354,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Text(verses[index], textAlign: TextAlign.center);
+              },
+              itemCount: verses.length,
+            ),
           ),
         ),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return Text(verses[index]);
-        },
-        itemCount: verses.length,
-      ),
-    ),);
+    );
   }
 
   Future<void> loadFile(int index) async {

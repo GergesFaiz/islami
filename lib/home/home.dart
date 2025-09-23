@@ -16,35 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
+  int index = 2;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset("assets/images/background.png",width: double.infinity,),
+        Image.asset("assets/images/background.png", width: double.infinity),
         Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              "إسلامي",
-              style: GoogleFonts.elMessiri(
-                fontWeight: FontWeight.w700,
-                fontSize: 30,
-              ),
-            ),
-          ),
+          appBar: AppBar(title: Text("إسلامي")),
           bottomNavigationBar: BottomNavigationBar(
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            backgroundColor: Color(0xFFB7935F),
-            type: BottomNavigationBarType.fixed,
             currentIndex: index,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.black,
-            elevation: 0,
             onTap: (value) {
               index = value;
               setState(() {});

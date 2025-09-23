@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/My_Theme.dart';
 import 'package:islami/home/tabs/ahadeth_tab.dart';
 import 'package:islami/home/tabs/radio_tab.dart';
 
+import 'home/hadeth_details.dart';
 import 'home/home.dart';
 import 'home/sura_details.dart';
 import 'home/tabs/quran_tab.dart';
 import 'home/tabs/sebha_tab.dart';
 import 'home/tabs/settings_tab.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -21,16 +23,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: HomeScreen.routeName,
+      theme:MyThemeData.lightTheme,
+      darkTheme: MyThemeData.DarkTheme,
+      themeMode: ThemeMode.light,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         RadioTab.routeName: (context) => RadioTab(),
-        AhadethTab.routeName:(context)=>AhadethTab(),
-        SebhaTab.routeName:(context)=>SebhaTab(),
-        SettingsTab.routeName:(context)=>SettingsTab(),
-        QuranTab.routeName:(context)=>QuranTab(),
-        SuraDetails.routeName:(context)=>SuraDetails(),
+        AhadethTab.routeName: (context) => AhadethTab(),
+        SebhaTab.routeName: (context) => SebhaTab(),
+        SettingsTab.routeName: (context) => SettingsTab(),
+        QuranTab.routeName: (context) => QuranTab(),
+        SuraDetails.routeName: (context) => SuraDetails(),
+        HadethDetails.routeName: (context) => HadethDetails(),
       },
-
     );
   }
 }
