@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami/home/sura_details.dart';
+import 'package:islami/sura_details/sura_details.dart';
 import 'package:islami/models/sura_model.dart';
 import 'package:islami/home/tabs/ahadeth_tab.dart';
+
+import '../../l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   static const String routeName = "ssss";
@@ -143,7 +145,7 @@ class QuranTab extends StatelessWidget {
         ),
         Divider(thickness: 3, color: Color(0xffB7935F)),
         Text(
-          "اسم السوره",style: Theme.of(context).textTheme.bodyLarge,
+          AppLocalizations.of(context)!.suraName,style: Theme.of(context).textTheme.bodyLarge,
           ),
         Divider(thickness: 3, color: Color(0xffB7935F)),
         Expanded(
