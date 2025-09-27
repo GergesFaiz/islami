@@ -5,6 +5,10 @@ import 'package:islami/home/tabs/quran_tab.dart';
 import 'package:islami/home/tabs/radio_tab.dart';
 import 'package:islami/home/tabs/sebha_tab.dart';
 import 'package:islami/home/tabs/settings_tab.dart';
+import 'package:provider/provider.dart';
+
+import '../l10n/app_localizations.dart';
+import '../providers/my_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home";
@@ -16,36 +20,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
+  int index = 2;
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Stack(
       children: [
-        Image.asset("assets/images/background.png",width: double.infinity,),
+        Image.asset(provider.getBackgroundPath(), width: double.infinity),
         Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              "إسلامي",
-              style: GoogleFonts.elMessiri(
-                fontWeight: FontWeight.w700,
-                fontSize: 30,
-              ),
-            ),
-          ),
+          appBar: AppBar(title: Text(AppLocalizations.of(context)!.appName)),
           bottomNavigationBar: BottomNavigationBar(
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            backgroundColor: Color(0xFFB7935F),
-            type: BottomNavigationBarType.fixed,
             currentIndex: index,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.black38,
-            elevation: 0,
-            iconSize: 35,
             onTap: (value) {
               index = value;
               setState(() {});
