@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/my_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   static const String routeName = "Hosdssame";
@@ -28,6 +31,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Center(
       child: Column(
         children: [
@@ -41,14 +45,14 @@ class _SebhaTabState extends State<SebhaTab> {
                 child: InkWell(
                   onTap: handleTasbeehTap,
                   child: Image.asset(
-                    "assets/images/body_of_seb7a.png",
+                    "assets/images/body_of_seb7a.png", color: provider.getColor(Colors.cyan),
                     height: 234,
                     width: 232,
                   ),
                 ),
               ),
               Image.asset(
-                "assets/images/head_of_seb7a.png",
+                "assets/images/head_of_seb7a.png" ,color: provider.getColor(Colors.cyan),
                 width: 73,
                 height: 130,
               ),
@@ -78,7 +82,7 @@ class _SebhaTabState extends State<SebhaTab> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              color: const Color(0xFFB7935F),
+              color: provider.getColor(Colors.cyan),
             ),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             child: Text(

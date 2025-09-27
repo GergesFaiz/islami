@@ -15,17 +15,17 @@ class SuraDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider=Provider.of<MyProvider>(context);
+    var provider = Provider.of<MyProvider>(context);
     var model = ModalRoute.of(context)!.settings.arguments as SuraModel;
 
     return ChangeNotifierProvider<SuraDetailsProvider>(
       create: (context) => SuraDetailsProvider()..loadFile(model.index),
       builder: (context, child) {
         var suraProvider = Provider.of<SuraDetailsProvider>(context);
-       // suraProvider.loadFile(model.index);
-       //  if (suraProvider.verses.isEmpty) {
-       //    suraProvider.loadFile(model.index);
-       //  }
+        // suraProvider.loadFile(model.index);
+        //  if (suraProvider.verses.isEmpty) {
+        //    suraProvider.loadFile(model.index);
+        //  }
         return Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -34,7 +34,12 @@ class SuraDetails extends StatelessWidget {
             ),
           ),
           child: Scaffold(
-            appBar: AppBar(title: Text(model.name)),
+            appBar: AppBar(
+              title: Text(
+                model.name,
+                style: TextStyle(color: provider.getColorText(Colors.cyan)),
+              ),
+            ),
             body: Padding(
               padding: const EdgeInsets.all(25),
               child: Container(
@@ -42,13 +47,19 @@ class SuraDetails extends StatelessWidget {
                 height: 652,
                 width: 354,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.transparent,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return Text(suraProvider.verses[index], textAlign: TextAlign.center);
+                    return Text(
+                      suraProvider.verses[index],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: provider.getColorText(Colors.cyan),
+                      ),
+                    );
                   },
                   itemCount: suraProvider.verses.length,
                 ),

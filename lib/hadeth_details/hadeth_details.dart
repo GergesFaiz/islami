@@ -22,18 +22,18 @@ class HadethDetails extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(title: Text(model.title)),
+        appBar: AppBar(title: Text(model.title,style: TextStyle(color: provider.getColorText(Colors.cyan)),)),
         body: Center(
           child: Container(
             padding: EdgeInsets.all(25),
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(25),
             ),
             height: MediaQuery.of(context).size.height * .7,
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return Text(model.content[index], textAlign: TextAlign.center);
+                return Text(model.content[index], textAlign: TextAlign.center,style: TextStyle(color: provider.getColorText(Colors.cyan)),);
               },
               itemCount: model.content.length,
             ),

@@ -19,5 +19,23 @@ class MyProvider extends ChangeNotifier {
     }else{
       return "assets/images/home_dark_background.png";
     }
+
+  }
+  Color getColor(Color coo){
+    if(themeMode==ThemeMode.light){
+      return Color(0xFFB7935F);
+
+    }else{
+      return Colors.yellow;
+    }
+
+  }Color getColorText(Color coo){
+    if(themeMode==ThemeMode.light){
+      return Colors.black;
+
+    }else{
+      return Colors.yellow;
+    }
+
   }
 }
